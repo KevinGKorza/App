@@ -1,17 +1,22 @@
 // remember to create your variables, go back to html and remember what you named them
 //also added 'click' option that calls functions when sed button is clicked, otherwise nothing would happen if you clicked it
-//remember to define variables, doing so will let JavaScript know which question 
-const restartBtn = document.getElementById('click',restart);
-const previousBtn = document.getElementById('click',previous);
-const nextBtn = document.getElementById('click',next);
-const submitBtn = document.getElementById('click',submit);
-const trueBtn = document.getElementById('True');
-const falseBtn = document.getElementById('False');
+//remember to define variables, doing so will let JavaScript know which question the user is answering by either incrementation or decrementation
+//remember a score counter, with every correct answer the score will go up
+//remember the questions, should be in an Array
+//remember snake style
+
+
+const buttonRestart = document.getElementById('click',restart);
+const buttonPrevious = document.getElementById('click',previous);
+const buttonNext = document.getElementById('click',next);
+const buttonSubmit = document.getElementById('click',submit);
+const buttonTrue = document.getElementById('True');
+const buttonFalse = document.getElementById('False');
 const yourScore = document.getElementById('yourscore');
 const questionText = document.getElementById('questiontext');
 
 
-// time option when user is playing game, time will 
+// The time option when user is playing game
 var Timer;
 var ele = document.getElementById('Timer');
 (function (){
@@ -23,7 +28,7 @@ var ele = document.getElementById('Timer');
 })()
 
 
-// 
+
 let currentQuestion = 0;
 var score = 0;
 let questions =[
@@ -49,65 +54,65 @@ let questions =[
     ]
 }
 
-//created a function beginQuiz() that will begin when the page loads and the java script starts working, once an answer is selected the page will automatically go to the next question, REMEMBER YOUR FUNCTIONS
+//The beginQuiz() function that will start when the page is activated and the javascript begins, once an answer is selected the page will automatically go to the next question, REMEMBER YOUR FUNCTIONS
 function beginQuiz(){
 currentQuestion = 0;
 questionText.innerHTML = questions[currentQuestion].question;
-trueBtn.innerHTML = questions[currentQuestion].answers[0].option;
-trueBtn.onclick = () => {
+buttonTrue.innerHTML = questions[currentQuestion].answers[0].option;
+buttonTrue.onclick = () => {
     let ano=0;
     if(questions[currentQuestion].answers[ano].answer){
         if(score<3){
             score++;
         }
     }
-    userScore.innerHTML = score;
+    yourScore.innerHTML = score;
     if(currentQuestion<2){
         next();
     }
 }
-falseBtn.innerHTML = questions[currentQuestion].answer[1].option;
-falseBtn.onclick = () => {
+buttonFalse.innerHTML = questions[currentQuestion].answer[1].option;
+buttonFalse.onclick = () => {
     let ano=1;
     if(questions[currentQuestion].answers[ano].answer){
         if(score<3){
             score++;
         }
     }
-    userScore.innerHTML = score;
+    yourScore.innerHTML = score;
     if(currentQuestion<2){
         next();
     }
 }
-previousBtn.classList.add('hide');
+buttonPrevious.classList.add('hide');
 
 }
 
 beginQuiz();
 
-//Creating a function restart will reset your score 
+//Creating a restart function will reset your score, and your current question
 function restart(){
     currentQuestion = 0;
-    previousBtn.classList.remove('hide');
-    nextBtn.classList.remove('hide');
-    submitBtn.classList.remove('hide');
-    trueBtn.classList.remove('hide');
-    falseBtn.classList.remove('hide');
+    buttonPrevious.classList.remove('hide');
+    buttonNext.classList.remove('hide');
+    buttonSubmit.classList.remove('hide');
+    buttonTrue.classList.remove('hide');
+    buttonFalse.classList.remove('hide');
     score = 0;
-    userScore.innerHTML = score;
+    yourScore.innerHTML = score;
     beginQuiz();
 }
 
-//next function will make it so the user could jump to the next question 
+//The next function will make it so the user could jump to the next question, currently the "currentQuestion" will be incremented but that could change depending on how the user answers the question 
 function next(){
     currentQuestion++;
     if(currentQuestion>=2){
-        nextBtn.classList.add('hide');
-        previousBtn.classList.remove('hide');
+        buttonNext.classList.add('hide');
+        buttonPrevious.classList.remove('hide');
     }
     questionText.innerHTML = questions[currentQuestion].question;
-    trueBtn.innerHTML = questions[currentQuestion].answers[0].option;
-    trueBtn.onclick = () => {
+    buttonTrue.innerHTML = questions[currentQuestion].answers[0].option;
+    buttonTrue.onclick = () => {
         let ano=0;
         if(questions[currentQuestion].answers[ano].answer){
             if(score<3){
@@ -119,66 +124,66 @@ function next(){
             next();
         }
     }
-    falseBtn.innerHTML = questions[currentQuestion].answers[1].option;
-    falseBtn.onclick = () => {
+    buttonFalse.innerHTML = questions[currentQuestion].answers[1].option;
+    buttonFalse.onclick = () => {
         let ano=1;
         if(questions[currentQuestion].answers[ano].answer){
             if(score<3){
                 score++;
             }
         }
-        userScore.innerHTML = score;
+        yourScore.innerHTML = score;
         if(currentQuestion<2){
             next();
         }
     }
-    previousBtn.classList.remove('hide');
+    buttonPrevious.classList.remove('hide');
 }
 
-//Prev function will allow the user to go back
+//Prev function will allow the user to go back, currently the "currentQuestion" will be decremented but that could change due to the users answer
 function prev(){
     currentQuestion--;
     if(currentQuestion<=0){
-        prevBtn.classList.add('hide');
-        nextBtn.classList.remove('hide');
+        buttonPrevious.classList.add('hide');
+        buttonNext.classList.remove('hide');
     }
     questionText.innerHTML = questions[currentQuestion].question;
-    trueBtn.inerHTML = questions[currentQuestion].answers[0].option;
-    trueBtn.onclick = () => {
+    buttonTrue.inerHTML = questions[currentQuestion].answers[0].option;
+    buttonTrue.onclick = () => {
         let ano=0;
         if(questions[currentQuestion].answers[ano].answer){
             if(score<3){
                 score++;
             }
         }
-        userScore.innerHTML = score;
+        yourScore.innerHTML = score;
         if(currentQuestion<2){
             next();
         }
     }
-    falseBtn.innerHTML = questions[currentQuestion].answers[1].option;
-    falseBtn.onclick = () => {
+    buttonFalse.innerHTML = questions[currentQuestion].answers[1].option;
+    buttonFalse.onclick = () => {
         let ano=1;
         if(questions[currentQuestion].answers[ano].answer){
             if(score<3){
                 score++;
             }
         }
-        userScore.innerHTML = score;
+        yourScore.innerHTML = score;
         if(currentQuestion<2){
             next();
         }
     }
-    nextBtn.classList.remove('hide');
+    buttonNext.classList.remove('hide');
 }
 
-//The submit button, after your done with the quiz submit it to see how you did
+//The submit button, after your done with the quiz submit it to see how you did and you will get a congratulatory text saying that you finished the quiz
 function submit(){
-    previousBtn.classList.add('hide');
-    nextBtn.classList.add('hide');
-    submitBtn.classList.add('hide');
-    trueBtn.classList.add('hide');
-    falseBtn.classList.add('hide');
+    buttonPrevious.add('hide');
+    buttonNext.classList.add('hide');
+    buttonSubmit.classList.add('hide');
+    buttonTrue.classList.add('hide');
+    buttonFalse.classList.add('hide');
     questionText.innerHTML = "Yay! You did it!";
 }
 
@@ -187,5 +192,4 @@ function submit(){
 
 
 
-]
-
+];
