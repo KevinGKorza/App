@@ -1,22 +1,37 @@
 // remember to create your variables, go back to html and remember what you named them
-//also added 'click' option that call functions when sed button is clicked, otherwise nothing would happen if you clicked it
+//also added 'click' option that calls functions when sed button is clicked, otherwise nothing would happen if you clicked it
+//remember to define variables, doing so will let JavaScript know which question 
 const restartBtn = document.getElementById('click',restart);
-const prevBtn = document.getElementById('click',prev);
+const previousBtn = document.getElementById('click',previous);
 const nextBtn = document.getElementById('click',next);
 const submitBtn = document.getElementById('click',submit);
 const trueBtn = document.getElementById('True');
 const falseBtn = document.getElementById('False');
-const userScore = document.getElementById('user-score');
-const questionText = document.getElementById('question-text');
+const yourScore = document.getElementById('yourscore');
+const questionText = document.getElementById('questiontext');
 
+
+// time option when user is playing game, time will 
+var Timer;
+var ele = document.getElementById('Timer');
+(function (){
+    var sec =0;
+    Timer = setInterval(()=>{
+    ele.innerHTML = '00:' +sec;
+    sec ++;
+    }, 1000)
+})()
+
+
+// 
 let currentQuestion = 0;
 var score = 0;
 let questions =[
 {
-    question: "What does LIFO stand for?",
+    question: "A Boolean can have multiple conditionals",
     answers: [
-        {option:"Last In First Out",answer:true},
-        {option:"Luke I'm Finally Out",answer:false}
+        {option:"No, it can only have values of true or false",answer:true},
+        {option:"Yes",answer:false}
     ]
 },
 {
@@ -34,7 +49,7 @@ let questions =[
     ]
 }
 
-//created a function beginQuiz() that will begin when the page loads and the java script starts working, REMEMBER YOUR FUNCTIONS
+//created a function beginQuiz() that will begin when the page loads and the java script starts working, once an answer is selected the page will automatically go to the next question, REMEMBER YOUR FUNCTIONS
 function beginQuiz(){
 currentQuestion = 0;
 questionText.innerHTML = questions[currentQuestion].question;
@@ -63,17 +78,17 @@ falseBtn.onclick = () => {
     if(currentQuestion<2){
         next();
     }
-
-prevBtn.classList.add('hide');
+}
+previousBtn.classList.add('hide');
 
 }
 
 beginQuiz();
 
-//Creating a function restart will reser score 
+//Creating a function restart will reset your score 
 function restart(){
     currentQuestion = 0;
-    prevBtn.classList.remove('hide');
+    previousBtn.classList.remove('hide');
     nextBtn.classList.remove('hide');
     submitBtn.classList.remove('hide');
     trueBtn.classList.remove('hide');
@@ -88,7 +103,7 @@ function next(){
     currentQuestion++;
     if(currentQuestion>=2){
         nextBtn.classList.add('hide');
-        prevBtn.classList.remove('hide');
+        previousBtn.classList.remove('hide');
     }
     questionText.innerHTML = questions[currentQuestion].question;
     trueBtn.innerHTML = questions[currentQuestion].answers[0].option;
@@ -117,7 +132,7 @@ function next(){
             next();
         }
     }
-    prevBtn.classList.remove('hide');
+    previousBtn.classList.remove('hide');
 }
 
 //Prev function will allow the user to go back
@@ -157,9 +172,9 @@ function prev(){
     nextBtn.classList.remove('hide');
 }
 
-//The submit button 
+//The submit button, after your done with the quiz submit it to see how you did
 function submit(){
-    prevBtn.classList.add('hide');
+    previousBtn.classList.add('hide');
     nextBtn.classList.add('hide');
     submitBtn.classList.add('hide');
     trueBtn.classList.add('hide');
@@ -167,5 +182,10 @@ function submit(){
     questionText.innerHTML = "Yay! You did it!";
 }
 
+//scorebord/leaderboard 
+
+
+
 
 ]
+
