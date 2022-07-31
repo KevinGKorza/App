@@ -1,3 +1,8 @@
+<!--Remember to link your stylesheet and javacript-->
+<!--Remember your ids and classes-->
+<!--Div is for the style.css and ID is for Java-->
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,25 +15,33 @@
 <body>
     <div class="container">
         <div class="score">
-            <span id="user-score">0</span>
-            <span id="total-score">/ 3</span>
+            <span id="yourscore">0</span>
+            <span id="total">/ 3</span>
             </div>
 
-            <div class="content" id="question-area">
-                <div id="question-text"></div>
+            <div class="content" id="questionarea">
+                <div id="questiontext"></div>
                 <div class="options">
-                    <button class="btn btn-option" id="True">True</button>
-                    <button class="btn btn-option" id="False">False</button>
+                    <button class="button buttonoption" id="True">True</button>
+                    <button class="button buttonoption" id="False">False</button>
                 </div>
                 </div>
 
                 <div class="controls">
-                    <button class="btn btn-restart"
+                    <button class="button buttonrestart"
         id="restart">Restart</button>
-        <button class="btn btn-prev" id="prev">Prev</button>
-        <button class="btn btn-next" id="btn-next">Next</button>
-        <button class="btn btn-submit" id="submit">Submit</button>
+        <button class="button buttonprevious" id="previous">Prev</button>
+        <button class="button buttonnext" id="next">Next</button>
+        <button class="button buttonsumbit" id="submit">Submit</button>
         </div>
+
+        <div id="JavaScripttimer">
+            <div id="Timer">
+            00:00
+        </div>
+        <button>pause</button>
+        <div>
+
     </div>
 </body>
 </html>
