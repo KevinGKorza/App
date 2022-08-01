@@ -55,7 +55,7 @@ let questions =[
 }
 
 //The beginQuiz() function that will start when the page is activated and the javascript begins, once an answer is selected the page will automatically go to the next question, REMEMBER YOUR FUNCTIONS
-function beginQuiz(){
+,function beginQuiz() {
 currentQuestion = 0;
 questionText.innerHTML = questions[currentQuestion].question;
 buttonTrue.innerHTML = questions[currentQuestion].answers[0].option;
@@ -86,12 +86,14 @@ buttonFalse.onclick = () => {
 }
 buttonPrevious.classList.add('hide');
 
-}
-
 beginQuiz();
 
+}
+
+
+
 //Creating a restart function will reset your score, and your current question
-function restart(){
+,function restart() {
     currentQuestion = 0;
     buttonPrevious.classList.remove('hide');
     buttonNext.classList.remove('hide');
@@ -104,7 +106,7 @@ function restart(){
 }
 
 //The next function will make it so the user could jump to the next question, currently the "currentQuestion" will be incremented but that could change depending on how the user answers the question 
-function next(){
+,function next() {
     currentQuestion++;
     if(currentQuestion>=2){
         buttonNext.classList.add('hide');
@@ -141,7 +143,7 @@ function next(){
 }
 
 //Prev function will allow the user to go back, currently the "currentQuestion" will be decremented but that could change due to the users answer
-function prev(){
+,function prev() {
     currentQuestion--;
     if(currentQuestion<=0){
         buttonPrevious.classList.add('hide');
@@ -178,7 +180,7 @@ function prev(){
 }
 
 //The submit button, after your done with the quiz submit it to see how you did and you will get a congratulatory text saying that you finished the quiz
-function submit(){
+,function submit() {
     buttonPrevious.add('hide');
     buttonNext.classList.add('hide');
     buttonSubmit.classList.add('hide');
