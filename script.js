@@ -3,7 +3,7 @@
 //remember to define variables, doing so will let JavaScript know which question the user is answering by either incrementation or decrementation
 //remember a score counter, with every correct answer the score will go up
 //remember the questions, should be in an Array
-//remember snake style
+//remember Camel style
 
 
 const buttonRestart = document.getElementById('click',restart);
